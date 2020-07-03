@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="apply">Apply</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="splash_screen_logo">Splash Screen logo</string>
+    <string name="cityCountry">City, Country</string>
+    <string name="refreshButtonText">Refresh</string>
+    <string name="countryNameInput">Enter country name...</string>
+    <string name="countryLabelText">Country:</string>
+    <string name="cityNameInput">Enter city name...</string>
+    <string name="cityLabelText">City:</string>
+    <string name="windLabelText">Wind:</string>
+    <string name="humidityLabelText">Humidity:</string>
+    <string name="pressureLabelText">Pressure:</string>
+</resources>

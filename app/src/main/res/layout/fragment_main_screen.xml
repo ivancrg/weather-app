@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainScreen"
+    >
+
+
+    <TextView
+        android:id="@+id/cityCountry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cityCountry"
+        android:layout_marginTop="@dimen/marginNormal"
+        android:layout_marginStart="@dimen/marginNormal" />
+
+    <ImageView
+        android:id="@+id/conditionImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/cityCountry"
+        android:layout_marginStart="@dimen/marginNormal"
+        />
+
+    <TextView
+        android:id="@+id/condition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/conditionImage"
+        android:layout_alignStart="@id/conditionImage"
+        android:layout_marginStart="@dimen/marginNormal" />
+
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/marginNormal"
+        android:layout_alignBaseline="@id/condition"
+        android:layout_toEndOf="@id/condition" />
+
+    <TextView
+        android:id="@+id/pressureLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/condition"
+        android:text="@string/pressureLabelText"
+        android:layout_marginTop="@dimen/marginNormal"
+        android:layout_marginStart="@dimen/marginNormal" />
+
+    <TextView
+        android:id="@+id/pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/pressureLabel"
+        android:paddingStart="@dimen/marginNormal"
+        android:layout_toEndOf="@id/pressureLabel"
+        tools:ignore="RtlSymmetry"
+        android:layout_marginStart="@dimen/marginNormal" />
+
+    <TextView
+        android:id="@+id/humidityLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/pressureLabel"
+        android:layout_marginTop="@dimen/marginNormal"
+        android:text="@string/humidityLabelText"
+        android:layout_marginStart="@dimen/marginNormal" />
+
+    <TextView
+        android:id="@+id/humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/humidityLabel"
+        android:layout_toEndOf="@id/humidityLabel"
+        android:paddingStart="@dimen/marginNormal"
+        android:layout_marginStart="@dimen/marginNormal"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/windLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/humidityLabel"
+        android:layout_marginTop="@dimen/marginNormal"
+        android:text="@string/windLabelText"
+        android:layout_marginStart="@dimen/marginNormal" />
+
+    <TextView
+        android:id="@+id/windData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/windLabel"
+        android:layout_toEndOf="@id/windLabel"
+        android:paddingStart="@dimen/marginNormal"
+        android:layout_marginStart="@dimen/marginNormal"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/cityLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/windLabel"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/marginNormal"
+        android:text="@string/cityLabelText"
+        android:layout_marginStart="@dimen/marginNormal" />
+
+    <EditText
+        android:id="@+id/cityInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/marginNormal"
+        android:layout_toEndOf="@+id/cityLabel"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/cityNameInput"
+        android:textSize="12sp"
+        android:layout_alignBaseline="@id/cityLabel" />
+
+    <TextView
+        android:id="@+id/countryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cityLabel"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/marginNormal"
+        android:text="@string/countryLabelText"
+        android:layout_marginStart="@dimen/marginNormal" />
+
+    <EditText
+        android:id="@+id/countryInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/marginNormal"
+        android:layout_toEndOf="@+id/countryLabel"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/countryNameInput"
+        android:textSize="12sp"
+        android:layout_alignBaseline="@id/countryLabel" />
+
+    <Button
+        android:id="@+id/refreshButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/countryLabel"
+        android:layout_marginTop="@dimen/marginNormal"
+        android:text="@string/refreshButtonText"
+        android:layout_marginStart="@dimen/marginNormal" />
+
+</RelativeLayout>
