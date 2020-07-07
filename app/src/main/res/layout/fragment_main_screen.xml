@@ -3,158 +3,142 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainScreen"
-    >
+    tools:context=".MainScreen">
 
     <ImageView
         android:id="@+id/conditionImage"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:scaleType="fitXY"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:adjustViewBounds="true"
-        android:src="@drawable/splash_screen_background" />
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_launcher_background" />
+
+    <ImageView
+        android:id="@+id/transparentViewTop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/transparentLabelHeight"
+        android:layout_alignParentTop="true"
+        android:alpha="0.5"
+        android:scaleType="centerCrop"
+        android:src="@drawable/white" />
+
+    <ImageView
+        android:id="@+id/transparentViewBottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/transparentLabelHeight"
+        android:layout_alignParentBottom="true"
+        android:alpha="0.5"
+        android:scaleType="centerCrop"
+        android:src="@drawable/white" />
 
     <TextView
-        android:id="@+id/cityCountry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/cityCountry"
-        android:layout_marginTop="@dimen/marginNormal"
-        android:layout_marginStart="@dimen/marginNormal" />
+        android:id="@+id/cityCountryLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/largeLabelHeight"
+        android:layout_alignParentTop="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        android:paddingTop="@dimen/marginSmall"
+        android:text="@string/mainScreenCityCountry" />
 
     <TextView
-        android:id="@+id/condition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cityCountry"
-        android:layout_alignStart="@id/cityCountry"
-        android:layout_marginStart="@dimen/marginNormal" />
+        android:id="@+id/weatherDescriptionLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_below="@id/cityCountryLabel"
+        android:autoSizeTextType="uniform"
+        android:gravity="center" />
 
     <TextView
-        android:id="@+id/temperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/marginNormal"
-        android:layout_alignBaseline="@id/condition"
-        android:layout_toEndOf="@id/condition" />
+        android:id="@+id/lastUpdatedLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/smallLabelHeight"
+        android:layout_below="@id/weatherDescriptionLabel"
+        android:autoSizeTextType="uniform"
+        android:gravity="center" />
+
+
+    <TextView
+        android:id="@+id/temperatureLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_above="@id/feelsLikeLabel"
+        android:layout_alignParentStart="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="start"
+        android:padding="@dimen/marginSmall" />
+
+    <TextView
+        android:id="@+id/feelsLikeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_above="@id/windDegreeLabel"
+        android:layout_alignParentStart="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="start"
+        android:padding="@dimen/marginSmall" />
+
+    <TextView
+        android:id="@+id/windDegreeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_above="@id/visibilityLabel"
+        android:layout_alignParentStart="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="start"
+        android:padding="@dimen/marginSmall" />
+
+    <TextView
+        android:id="@+id/visibilityLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="start"
+        android:padding="@dimen/marginSmall" />
 
     <TextView
         android:id="@+id/pressureLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/condition"
-        android:text="@string/pressureLabelText"
-        android:layout_marginTop="@dimen/marginNormal"
-        android:layout_marginStart="@dimen/marginNormal" />
-
-    <TextView
-        android:id="@+id/pressure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/pressureLabel"
-        android:paddingStart="@dimen/marginNormal"
-        android:layout_toEndOf="@id/pressureLabel"
-        tools:ignore="RtlSymmetry"
-        android:layout_marginStart="@dimen/marginNormal" />
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_above="@id/humidityLabel"
+        android:layout_alignParentEnd="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="end"
+        android:padding="@dimen/marginSmall" />
 
     <TextView
         android:id="@+id/humidityLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/pressureLabel"
-        android:layout_marginTop="@dimen/marginNormal"
-        android:text="@string/humidityLabelText"
-        android:layout_marginStart="@dimen/marginNormal" />
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_above="@id/windSpeedLabel"
+        android:layout_alignParentEnd="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="end"
+        android:padding="@dimen/marginSmall" />
 
     <TextView
-        android:id="@+id/humidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/humidityLabel"
-        android:layout_toEndOf="@id/humidityLabel"
-        android:paddingStart="@dimen/marginNormal"
-        android:layout_marginStart="@dimen/marginNormal"
-        tools:ignore="RtlSymmetry" />
+        android:id="@+id/windSpeedLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_above="@id/uvIndexLabel"
+        android:layout_alignParentEnd="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="end"
+        android:padding="@dimen/marginSmall" />
 
     <TextView
-        android:id="@+id/windLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/humidityLabel"
-        android:layout_marginTop="@dimen/marginNormal"
-        android:text="@string/windLabelText"
-        android:layout_marginStart="@dimen/marginNormal" />
-
-    <TextView
-        android:id="@+id/windData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/windLabel"
-        android:layout_toEndOf="@id/windLabel"
-        android:paddingStart="@dimen/marginNormal"
-        android:layout_marginStart="@dimen/marginNormal"
-        tools:ignore="RtlSymmetry" />
-
-    <TextView
-        android:id="@+id/cityLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/windLabel"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="@dimen/marginNormal"
-        android:text="@string/cityLabelText"
-        android:layout_marginStart="@dimen/marginNormal" />
-
-    <EditText
-        android:id="@+id/cityInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="@dimen/marginNormal"
-        android:layout_toEndOf="@+id/cityLabel"
-        android:ems="10"
-        android:inputType="text"
-        android:text="@string/cityNameInput"
-        android:textSize="12sp"
-        android:layout_alignBaseline="@id/cityLabel" />
-
-    <TextView
-        android:id="@+id/countryLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cityLabel"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="@dimen/marginNormal"
-        android:text="@string/countryLabelText"
-        android:layout_marginStart="@dimen/marginNormal" />
-
-    <EditText
-        android:id="@+id/countryInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="@dimen/marginNormal"
-        android:layout_toEndOf="@+id/countryLabel"
-        android:ems="10"
-        android:inputType="text"
-        android:text="@string/countryNameInput"
-        android:textSize="12sp"
-        android:layout_alignBaseline="@id/countryLabel" />
-
-    <Button
-        android:id="@+id/refreshButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/countryLabel"
-        android:layout_marginTop="@dimen/marginNormal"
-        android:text="@string/refreshButtonText"
-        android:layout_marginStart="@dimen/marginNormal" />
-
+        android:id="@+id/uvIndexLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="end"
+        android:padding="@dimen/marginSmall" />
 </RelativeLayout>

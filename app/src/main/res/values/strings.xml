@@ -15,5 +15,58 @@
     <string name="pressureLabelText">Pressure:</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
+    <string name="mainScreenCityCountry">Zagreb, Croatia</string>
+    <string name="testText">TestText</string>
+    <string name="cityToSearch">City to search:</string>
+    <string-array name="availableSearchCities">
+        <item>Amsterdam</item>
+        <item>Andorra la Vella</item>
+        <item>Ankara</item>
+        <item>Athens</item>
+        <item>Berlin</item>
+        <item>Bern</item>
+        <item>Bratislava</item>
+        <item>City of Brussels</item>
+        <item>Bucharest</item>
+        <item>Budapest</item>
+        <item>Chisinau</item>
+        <item>Copenhagen</item>
+        <item>Dublin</item>
+        <item>Gibraltar</item>
+        <item>Helsinki</item>
+        <item>Kiev</item>
+        <item>Lisbon</item>
+        <item>Ljubljana</item>
+        <item>London</item>
+        <item>Luxembourg City</item>
+        <item>Madrid</item>
+        <item>Minsk</item>
+        <item>Monaco</item>
+        <item>Moscow</item>
+        <item>Nicosia</item>
+        <item>Nuuk</item>
+        <item>Oslo</item>
+        <item>Paris</item>
+        <item>Podgorica</item>
+        <item>Prague</item>
+        <item>Pristina</item>
+        <item>Reykjavik</item>
+        <item>Riga</item>
+        <item>Rome</item>
+        <item>City of San Marino</item>
+        <item>Sarajevo</item>
+        <item>Skopje</item>
+        <item>Sofia</item>
+        <item>Stockholm</item>
+        <item>Sukhumi</item>
+        <item>Tallinn</item>
+        <item>Tbilisi</item>
+        <item>Tirana</item>
+        <item>Vaduz</item>
+        <item>Valletta</item>
+        <item>Vienna</item>
+        <item>Vilnius</item>
+        <item>Warsaw</item>
+        <item>Zagreb</item>
+    </string-array>
 </resources>

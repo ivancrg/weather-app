@@ -6,8 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +16,9 @@ import com.example.weatherapp.model.WeatherData;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,16 +27,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MainScreen extends Fragment {
-    private TextView cityText;
-    private TextView condDescr;
-    private TextView temp;
-    private TextView press;
-    private TextView wind;
-    private TextView hum;
-    private EditText cityInput;
     private ImageView imgView;
-    private EditText countryInput;
-
+    private TextView weatherDescriptionLabel;
+    private TextView lastUpdatedLabel;
+    private TextView temperatureLabel;
+    private TextView feelsLikeLabel;
+    private TextView windDegreeLabel;
+    private TextView visibilityLabel;
+    private TextView pressureLabel;
+    private TextView humidityLabel;
+    private TextView windSpeedLabel;
+    private TextView uvIndexLabel;
 
     public MainScreen() {
         // Required empty public constructor
@@ -72,48 +74,32 @@ public class MainScreen extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main_screen, container, false);
 
-        cityText = view.findViewById(R.id.cityCountry);
-        condDescr = view.findViewById(R.id.condition);
-        temp = view.findViewById(R.id.temperature);
-        hum = view.findViewById(R.id.humidity);
-        press = view.findViewById(R.id.pressure);
-        wind = view.findViewById(R.id.windData);
-        cityInput = view.findViewById(R.id.cityInput);
-        countryInput = view.findViewById(R.id.countryInput);
         imgView = view.findViewById(R.id.conditionImage);
-        Button refresh = view.findViewById(R.id.refreshButton);
+        weatherDescriptionLabel  = view.findViewById(R.id.weatherDescriptionLabel);
+        lastUpdatedLabel  = view.findViewById(R.id.lastUpdatedLabel);
+        temperatureLabel  = view.findViewById(R.id.temperatureLabel);
+        feelsLikeLabel = view.findViewById(R.id.feelsLikeLabel);
+        windDegreeLabel = view.findViewById(R.id.windDegreeLabel);
+        visibilityLabel = view.findViewById(R.id.visibilityLabel);
+        pressureLabel = view.findViewById(R.id.pressureLabel);
+        humidityLabel = view.findViewById(R.id.humidityLabel);
+        windSpeedLabel = view.findViewById(R.id.windSpeedLabel);
+        uvIndexLabel = view.findViewById(R.id.uvIndexLabel);
 
-        refresh.setOnClickListener(view1 -> {
-            cityInput.clearFocus();
-            countryInput.clearFocus();
-            getCurrentData(cityInput.getText().toString(), countryInput.getText().toString());
-        });
-
-        cityInput.setOnFocusChangeListener((view12, b) -> {
-            if (cityInput.getText().toString().equals("Enter city name..."))
-                cityInput.setText("");
-        });
-
-        countryInput.setOnFocusChangeListener((view13, b) -> {
-            if (countryInput.getText().toString().equals("Enter country name..."))
-                countryInput.setText("");
-        });
-
+        getCurrentData(Configuration.getZagrebLatitude(), Configuration.getZagrebLongitude());
 
         // Inflate the layout for this fragment
         return view;
     }
 
-    private void getCurrentData(String city, String country) {
-        String cityAndCountry = city + "," + country;
-
+    private void getCurrentData(double lat, double lon) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Configuration.getBaseUrl())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         IWeatherService weatherService = retrofit.create(IWeatherService.class);
-        Call<WeatherData> call = weatherService.getCurrentWeatherData(cityAndCountry, Configuration.getAppId());
+        Call<WeatherData> call = weatherService.getCurrentWeatherData(lat, lon, Configuration.getAppId());
 
         call.enqueue(new Callback<WeatherData>() {
             @Override
@@ -134,21 +120,37 @@ public class MainScreen extends Fragment {
 
     @SuppressLint("SetTextI18n")
     public void showCurrentData(WeatherData weatherData) {
-        loadBackground(weatherData.getWeather().get(0).getId());
+        if(weatherData == null){
+            weatherDescriptionLabel.setText("Weather information not available.");
+            return;
+        }
 
-        cityText.setText(weatherData.getName() + ", " + weatherData.getSystemData().getCountry().toUpperCase());
+        loadBackground(weatherData.getCurrent().getWeather().get(0).getId());
 
-        condDescr.setText(weatherData.getWeather().get(0).getDescription());
+        weatherDescriptionLabel.setText(weatherData.getCurrent().getWeather().get(0).getDescription());
 
-        double temperature = weatherData.getMainData().getTemperature() - 273.0;
-        temperature = Math.round(temperature * 100.0) / 100.0;
-        temp.setText(temperature + "°C");
+        Timestamp ts = new Timestamp(System.currentTimeMillis());
+        lastUpdatedLabel.setText((new Date(ts.getTime()).toString()));
 
-        press.setText(weatherData.getMainData().getPressure() + " hPa");
+        float t = weatherData.getCurrent().getTemp() - 273.0f;
+        t = Math.round(t * 100.0f) / 100.0f;
+        temperatureLabel.setText("Temperature: " + t + "°C");
 
-        wind.setText(weatherData.getWind().getSpeed().toString() + " units, " + weatherData.getWind().getDirection().toString() + "°");
+        t = weatherData.getCurrent().getFeels_like() - 273.0f;
+        t = Math.round(t * 100.f) / 100.0f;
+        feelsLikeLabel.setText("Feels like: " + t + "°C");
 
-        hum.setText(weatherData.getMainData().getHumidity() + "%");
+        windDegreeLabel.setText("Wind direction: " + weatherData.getCurrent().getWind_deg() + "°");
+
+        visibilityLabel.setText("Visibility: " + weatherData.getCurrent().getVisibility() + "m");
+
+        pressureLabel.setText("Pressure: " + weatherData.getCurrent().getPressure() + " hPa");
+
+        humidityLabel.setText("Humidity: " + weatherData.getCurrent().getHumidity() + "%");
+
+        windSpeedLabel.setText("Wind speed: " + weatherData.getCurrent().getWind_speed() + " m/s");
+
+        uvIndexLabel.setText("UV index: " + weatherData.getCurrent().getUvi());
     }
 
     private void loadBackground(int desc) {

@@ -5,170 +5,117 @@ import com.google.gson.annotations.SerializedName;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WeatherData {
-
-    @SerializedName("coord")
+    @SerializedName("lat")
     @Expose
-    private Coordinates coordinates;
+    private double latitude;
 
-    @SerializedName("weather")
+    @SerializedName("lon")
     @Expose
-    private List<Weather> weather = null;
+    private double longitude;
 
-    @SerializedName("main")
+    @SerializedName("timezone")
     @Expose
-    private MainData mainData;
+    private String timezone;
 
-    @SerializedName("wind")
+    @SerializedName("timezone_offset")
     @Expose
-    private Wind wind;
+    private float timezone_offset;
 
-    @SerializedName("clouds")
+    @SerializedName("current")
     @Expose
-    private Clouds clouds;
+    private Current current;
 
-    @SerializedName("sys")
+    @SerializedName("minutely")
     @Expose
-    private SystemData systemData;
+    private List<Minutely> minutely;
 
-    @SerializedName("base")
+    @SerializedName("hourly")
     @Expose
-    private String base;
+    private List<Hourly> hourly;
 
-    @SerializedName("visibility")
+    @SerializedName("daily")
     @Expose
-    private Integer visibility;
+    private List<Daily> daily;
 
-    @SerializedName("dt")
-    @Expose
-    private Integer dt;
-
-    @SerializedName("id")
-    @Expose
-    private Integer id;
-
-    @SerializedName("name")
-    @Expose
-    private String name;
-
-    @SerializedName("cod")
-    @Expose
-    private Integer cod;
-
-    public Coordinates getCoordinates() {
-        return coordinates;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 
-    public List<Weather> getWeather() {
-        return weather;
+    public double getLongitude() {
+        return longitude;
     }
 
-    public void setWeather(List<Weather> weather) {
-        this.weather = weather;
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
-    public MainData getMainData() {
-        return mainData;
+    public String getTimezone() {
+        return timezone;
     }
 
-    public void setMainData(MainData mainData) {
-        this.mainData = mainData;
+    public void setTimezone(String timezone) {
+        this.timezone = timezone;
     }
 
-    public Wind getWind() {
-        return wind;
+    public float getTimezone_offset() {
+        return timezone_offset;
     }
 
-    public void setWind(Wind wind) {
-        this.wind = wind;
+    public void setTimezone_offset(float timezone_offset) {
+        this.timezone_offset = timezone_offset;
     }
 
-    public Clouds getClouds() {
-        return clouds;
+    public Current getCurrent() {
+        return current;
     }
 
-    public void setClouds(Clouds clouds) {
-        this.clouds = clouds;
+    public void setCurrent(Current current) {
+        this.current = current;
     }
 
-    public SystemData getSystemData() {
-        return systemData;
+    public List<Minutely> getMinutely() {
+        return minutely;
     }
 
-    public void setSystemData(SystemData systemData) {
-        this.systemData = systemData;
+    public void setMinutely(List<Minutely> minutely) {
+        this.minutely = minutely;
     }
 
-    public String getBase() {
-        return base;
+    public List<Hourly> getHourly() {
+        return hourly;
     }
 
-    public void setBase(String base) {
-        this.base = base;
+    public void setHourly(List<Hourly> hourly) {
+        this.hourly = hourly;
     }
 
-    public Integer getVisibility() {
-        return visibility;
+    public List<Daily> getDaily() {
+        return daily;
     }
 
-    public void setVisibility(Integer visibility) {
-        this.visibility = visibility;
+    public void setDaily(List<Daily> daily) {
+        this.daily = daily;
     }
 
-    public Integer getDt() {
-        return dt;
-    }
-
-    public void setDt(Integer dt) {
-        this.dt = dt;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getCod() {
-        return cod;
-    }
-
-    public void setCod(Integer cod) {
-        this.cod = cod;
-    }
-
-    @NotNull
     @Override
     public String toString() {
         return "WeatherData{" +
-                "coordinates=" + coordinates +
-                ", weather=" + weather +
-                ", mainData=" + mainData +
-                ", wind=" + wind +
-                ", clouds=" + clouds +
-                ", systemData=" + systemData +
-                ", base='" + base + '\'' +
-                ", visibility=" + visibility +
-                ", dt=" + dt +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                ", cod=" + cod +
+                "latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", timezone='" + timezone + '\'' +
+                ", timezone_offset=" + timezone_offset +
+                ", current=" + current +
+                //", minutely=" + minutely +
+                //", hourly=" + hourly +
+                ", daily=" + daily +
                 '}';
     }
 }
