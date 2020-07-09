@@ -8,7 +8,7 @@ import java.util.List;
 public class Current {
     @SerializedName("dt")
     @Expose
-    private float dt;
+    private long dt;
 
     @SerializedName("sunrise")
     @Expose
@@ -66,11 +66,11 @@ public class Current {
     @Expose
     private Rain rain;
 
-    public float getDt() {
+    public long getDt() {
         return dt;
     }
 
-    public void setDt(float dt) {
+    public void setDt(long dt) {
         this.dt = dt;
     }
 

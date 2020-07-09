@@ -8,7 +8,7 @@ import java.util.List;
 public class Hourly {
     @SerializedName("dt")
     @Expose
-    private float dt;
+    private long dt;
 
     @SerializedName("temp")
     @Expose
@@ -50,11 +50,11 @@ public class Hourly {
     @Expose
     private Rain rain;
 
-    public float getDt() {
+    public long getDt() {
         return dt;
     }
 
-    public void setDt(float dt) {
+    public void setDt(long dt) {
         this.dt = dt;
     }
 

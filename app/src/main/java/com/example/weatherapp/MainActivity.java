@@ -2,7 +2,6 @@ package com.example.weatherapp;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Gravity;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -35,17 +34,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             SplashScreen splashScreen = new SplashScreen();
             getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, splashScreen).commit();
 
             final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    MainScreen mainScreen = new MainScreen();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mainScreen).commit();
-                }
+            handler.postDelayed(() -> {
+                MainScreen mainScreen = new MainScreen();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mainScreen).commit();
             }, 2500);
         }
     }
@@ -61,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch (menuItem.getItemId()){
+        switch (menuItem.getItemId()) {
             case R.id.navigation_main:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MainScreen()).commit();
                 break;

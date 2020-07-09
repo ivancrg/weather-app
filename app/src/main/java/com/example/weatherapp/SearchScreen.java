@@ -22,7 +22,9 @@ import com.example.weatherapp.model.WeatherData;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -73,7 +75,7 @@ public class SearchScreen extends Fragment implements AdapterView.OnItemSelected
         uvIndexLabel = view.findViewById(R.id.uvIndexLabel);
         Spinner spinner = view.findViewById(R.id.citiesSpinner);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(Objects.requireNonNull(getActivity()),
                 R.array.availableSearchCities, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -139,7 +141,7 @@ public class SearchScreen extends Fragment implements AdapterView.OnItemSelected
         weatherDescriptionLabel.setText(weatherData.getCurrent().getWeather().get(0).getDescription());
 
         Timestamp ts = new Timestamp(System.currentTimeMillis());
-        lastUpdatedLabel.setText((new Date(ts.getTime()).toString()));
+        lastUpdatedLabel.setText("Updated: " + getDayText(ts, true));
 
         float t = weatherData.getCurrent().getTemp() - 273.0f;
         t = Math.round(t * 100.0f) / 100.0f;
@@ -168,7 +170,7 @@ public class SearchScreen extends Fragment implements AdapterView.OnItemSelected
             loadImage(imgView, R.drawable.thunderstorm); //thunderstorm
         } else if (desc < 503) {
             loadImage(imgView, R.drawable.drizzle_light_moderate_rain); //drizzle, light and moderate rain
-        } else if (desc >= 503 && desc < 600) {
+        } else if (desc < 600) {
             loadImage(imgView, R.drawable.rain); //all sorts of rain
         } else if (desc < 700) {
             loadImage(imgView, R.drawable.snow); //snow
@@ -188,5 +190,15 @@ public class SearchScreen extends Fragment implements AdapterView.OnItemSelected
                 .load(imageLocation)
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(img);
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private String getDayText(Timestamp ts, boolean detailed) {
+        Date date = new Date(ts.getTime());
+
+        if (detailed)
+            return new SimpleDateFormat("HH:mm:ss, dd.MM.yyyy").format(date);
+
+        return new SimpleDateFormat("EEEE, dd. MMMM yyyy.").format(date);
     }
 }

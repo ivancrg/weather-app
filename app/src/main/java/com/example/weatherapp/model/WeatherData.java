@@ -3,9 +3,6 @@ package com.example.weatherapp.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class WeatherData {
@@ -114,7 +111,7 @@ public class WeatherData {
                 ", timezone_offset=" + timezone_offset +
                 ", current=" + current +
                 //", minutely=" + minutely +
-                //", hourly=" + hourly +
+                ", hourly=" + hourly +
                 ", daily=" + daily +
                 '}';
     }

@@ -18,7 +18,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/blairitc_tt_medium"
         android:paddingTop="@dimen/marginSmall"
-        android:text="SUNBEAM"
+        android:text="@string/appName"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
-
 </LinearLayout>

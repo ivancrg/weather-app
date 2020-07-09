@@ -7,6 +7,7 @@ import java.util.Map;
 
 public abstract class Configuration {
     private static final String BASE_URL = "https://api.openweathermap.org";
+    private static final String PATH_URL = "/data/2.5/onecall";
     private static final String APP_ID = "dcc06c34cf7bba0ff30aabd3269d249b";
     private static final float zagrebLatitude = 45.815399f;
     private static final float zagrebLongitude = 15.966568f;
@@ -71,6 +72,10 @@ public abstract class Configuration {
 
     public static String getBaseUrl() {
         return BASE_URL;
+    }
+
+    public static String getPathUrl() {
+        return PATH_URL;
     }
 
     public static String getAppId() {

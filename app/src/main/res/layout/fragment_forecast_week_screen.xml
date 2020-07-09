@@ -1,14 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ForecastWeekScreen">
+    tools:context=".MainScreen">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/conditionImage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_launcher_background" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/transparentViewTop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/searchUpperTransparentLabelHeight"
+        android:layout_alignParentTop="true"
+        android:alpha="0.5"
+        android:scaleType="centerCrop"
+        android:src="@drawable/white" />
+
+    <ImageView
+        android:id="@+id/transparentViewBottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/searchLowerTransparentLabelHeight"
+        android:layout_alignParentBottom="true"
+        android:alpha="0.5"
+        android:scaleType="centerCrop"
+        android:src="@drawable/white" />
+
+    <TextView
+        android:id="@+id/cityLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/largeLabelHeight"
+        android:layout_alignParentTop="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        android:paddingTop="@dimen/marginSmall"
+        android:text="@string/mainScreenCityCountry" />
+
+    <TextView
+        android:id="@+id/weatherDescriptionLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_below="@id/cityLabel"
+        android:autoSizeTextType="uniform"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/lastUpdatedLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/smallLabelHeight"
+        android:layout_below="@id/weatherDescriptionLabel"
+        android:autoSizeTextType="uniform"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/weekDayLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/smallLabelHeight"
+        android:layout_below="@id/lastUpdatedLabel"
+        android:autoSizeTextType="uniform"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/temperatureLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_above="@id/feelsLikeLabel"
+        android:layout_alignParentStart="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="start"
+        android:padding="@dimen/marginSmall" />
+
+    <TextView
+        android:id="@+id/feelsLikeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_above="@id/windDegreeLabel"
+        android:layout_alignParentStart="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="start"
+        android:padding="@dimen/marginSmall" />
+
+    <TextView
+        android:id="@+id/windDegreeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_above="@id/rainLabel"
+        android:layout_alignParentStart="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="start"
+        android:padding="@dimen/marginSmall" />
+
+    <TextView
+        android:id="@+id/rainLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="start"
+        android:padding="@dimen/marginSmall" />
+
+    <ImageView
+        android:id="@+id/forecastNavigationBack"
+        android:layout_width="@dimen/forecastArrowSize"
+        android:layout_height="@dimen/forecastArrowSize"
+        android:layout_above="@id/temperatureLabel"
+        android:layout_alignParentStart="true"
+        android:padding="@dimen/marginSmall"
+        android:scaleType="centerCrop"
+        android:src="@drawable/forecast_arrow_back" />
+
+    <ImageView
+        android:id="@+id/forecastNavigationForward"
+        android:layout_width="@dimen/forecastArrowSize"
+        android:layout_height="@dimen/forecastArrowSize"
+        android:layout_above="@id/pressureLabel"
+        android:layout_alignParentEnd="true"
+        android:padding="@dimen/marginSmall"
+        android:scaleType="centerCrop"
+        android:src="@drawable/forecast_arrow_forward" />
+
+    <TextView
+        android:id="@+id/pressureLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_above="@id/humidityLabel"
+        android:layout_alignParentEnd="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="end"
+        android:padding="@dimen/marginSmall" />
+
+    <TextView
+        android:id="@+id/humidityLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_above="@id/windSpeedLabel"
+        android:layout_alignParentEnd="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="end"
+        android:padding="@dimen/marginSmall" />
+
+    <TextView
+        android:id="@+id/windSpeedLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_above="@id/uvIndexLabel"
+        android:layout_alignParentEnd="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="end"
+        android:padding="@dimen/marginSmall" />
+
+    <TextView
+        android:id="@+id/uvIndexLabel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mediumLabelHeight"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:autoSizeTextType="uniform"
+        android:gravity="end"
+        android:padding="@dimen/marginSmall" />
+</RelativeLayout>

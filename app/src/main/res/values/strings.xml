@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">WeatherApp</string>
     <string name="apply">Apply</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -16,8 +15,10 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="mainScreenCityCountry">Zagreb, Croatia</string>
+    <string name="forecastScreenCityCountry">Zagreb, Croatia</string>
     <string name="testText">TestText</string>
     <string name="cityToSearch">City to search:</string>
+    <string name="appName">Sunbeam</string>
     <string-array name="availableSearchCities">
         <item>Amsterdam</item>
         <item>Andorra la Vella</item>

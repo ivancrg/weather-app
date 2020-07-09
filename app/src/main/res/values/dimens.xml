@@ -5,8 +5,10 @@
     <dimen name="marginSmall">8dp</dimen>
     <dimen name="transparentLabelHeight">120dp</dimen>
     <dimen name="searchLowerTransparentLabelHeight">175dp</dimen>
+    <dimen name="searchUpperTransparentLabelHeight">143dp</dimen>
     <dimen name="searchObjectWidth">120dp</dimen>
     <dimen name="searchObjectHeight">55dp</dimen>
+    <dimen name="forecastArrowSize">55dp</dimen>
     <dimen name="largeLabelHeight">66dp</dimen>
     <dimen name="mediumLabelHeight">30dp</dimen>
     <dimen name="smallLabelHeight">23dp</dimen>

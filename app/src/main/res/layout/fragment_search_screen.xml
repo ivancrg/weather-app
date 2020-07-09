@@ -110,14 +110,14 @@
         android:autoSizeTextType="uniform"
         android:gravity="center"
         android:padding="@dimen/marginSmall"
-        android:text="@string/cityToSearch"/>
+        android:text="@string/cityToSearch" />
 
     <Spinner
         android:id="@+id/citiesSpinner"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/searchObjectHeight"
-        android:layout_toRightOf="@id/searchLabel"
-        android:layout_above="@id/pressureLabel" />
+        android:layout_above="@id/pressureLabel"
+        android:layout_toRightOf="@id/searchLabel" />
 
     <TextView
         android:id="@+id/pressureLabel"

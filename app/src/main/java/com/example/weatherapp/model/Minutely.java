@@ -6,17 +6,17 @@ import com.google.gson.annotations.SerializedName;
 public class Minutely {
     @SerializedName("dt")
     @Expose
-    private float dt;
+    private long dt;
 
     @SerializedName("precipitation")
     @Expose
     private float precipitation;
 
-    public float getDt() {
+    public long getDt() {
         return dt;
     }
 
-    public void setDt(float dt) {
+    public void setDt(long dt) {
         this.dt = dt;
     }
 

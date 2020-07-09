@@ -66,24 +66,24 @@
         android:id="@+id/temperatureLabel"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mediumLabelHeight"
-        android:layout_above="@id/feelsLikeLabel"
+        android:layout_above="@id/minTemperatureLabel"
         android:layout_alignParentStart="true"
         android:autoSizeTextType="uniform"
         android:gravity="start"
         android:padding="@dimen/marginSmall" />
 
     <TextView
-        android:id="@+id/feelsLikeLabel"
+        android:id="@+id/minTemperatureLabel"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mediumLabelHeight"
-        android:layout_above="@id/windDegreeLabel"
+        android:layout_above="@id/maxTemperatureLabel"
         android:layout_alignParentStart="true"
         android:autoSizeTextType="uniform"
         android:gravity="start"
         android:padding="@dimen/marginSmall" />
 
     <TextView
-        android:id="@+id/windDegreeLabel"
+        android:id="@+id/maxTemperatureLabel"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mediumLabelHeight"
         android:layout_above="@id/visibilityLabel"
@@ -126,14 +126,14 @@
         android:id="@+id/windSpeedLabel"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mediumLabelHeight"
-        android:layout_above="@id/uvIndexLabel"
+        android:layout_above="@id/cloudsLabel"
         android:layout_alignParentEnd="true"
         android:autoSizeTextType="uniform"
         android:gravity="end"
         android:padding="@dimen/marginSmall" />
 
     <TextView
-        android:id="@+id/uvIndexLabel"
+        android:id="@+id/cloudsLabel"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mediumLabelHeight"
         android:layout_alignParentEnd="true"
