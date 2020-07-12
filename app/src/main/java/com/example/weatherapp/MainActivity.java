@@ -21,19 +21,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.navigation_toolbar);
-        setSupportActionBar(toolbar);
-
-        drawerLayout = findViewById(R.id.navigation_drawer_layout);
-        NavigationView navigationView = findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
         if (savedInstanceState == null) {
             SplashScreen splashScreen = new SplashScreen();
             getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, splashScreen).commit();
@@ -42,6 +29,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             handler.postDelayed(() -> {
                 MainScreen mainScreen = new MainScreen();
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mainScreen).commit();
+
+                Toolbar toolbar = findViewById(R.id.navigation_toolbar);
+                setSupportActionBar(toolbar);
+
+                drawerLayout = findViewById(R.id.navigation_drawer_layout);
+                NavigationView navigationView = findViewById(R.id.navigation_view);
+                navigationView.setNavigationItemSelectedListener(this);
+
+                ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                        R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                drawerLayout.addDrawerListener(toggle);
+                toggle.syncState();
             }, 2500);
         }
     }
