@@ -19,6 +19,10 @@
     <string name="testText">TestText</string>
     <string name="cityToSearch">City to search:</string>
     <string name="appName">Sunbeam</string>
+    <string name="mainScreenTitle">Main Screen</string>
+    <string name="weekForecastScreenTitle">Week Forecast Screen</string>
+    <string name="forecast48ScreenTitle">48h Forecast Screen</string>
+    <string name="searchScreenTitle">Search Screen</string>
     <string-array name="availableSearchCities">
         <item>Amsterdam</item>
         <item>Andorra la Vella</item>
