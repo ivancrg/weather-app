@@ -9,5 +9,5 @@
         style="@style/ThemeOverlay.AppCompat"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorAccent" />
+        android:background="@color/navigationBackground" />
 </LinearLayout>

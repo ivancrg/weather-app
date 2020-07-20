@@ -1,0 +1,64 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="@string/settingsGeneral"
+        app:iconSpaceReserved="false" >
+
+        <Preference
+            app:iconSpaceReserved="false"
+            app:key="settingsPrimaryColor"
+
+            app:summary="@string/settingsPrimaryColorSummary"
+            app:title="@string/settingsPrimaryColorTitle"/>
+
+        <Preference
+            app:iconSpaceReserved="false"
+            app:key="settingsPrimaryDarkColor"
+            app:summary="@string/settingsPrimaryDarkColorSummary"
+            app:title="@string/settingsPrimaryDarkColorTitle" />
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            app:key="settingsDarkMode"
+            app:summary="@string/settingsDarkModeSummary"
+            app:title="@string/settingsDarkModeTitle" />
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            app:key="settingsToolbar"
+            app:summary="@string/settingsToolbarSummary"
+            app:title="@string/settingsToolbarTitle" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/settingsNavigation"
+        app:iconSpaceReserved="false">
+
+        <SwitchPreferenceCompat
+            app:iconSpaceReserved="false"
+            app:key="settingsNavigationType"
+            app:summaryOff="@string/settingsNavigationTypeDisabled"
+            app:summaryOn="@string/settingsNavigationTypeEnabled"
+            app:title="@string/settingsNavigationTypeTitle" />
+
+        <Preference
+            app:iconSpaceReserved="false"
+            app:key="settingsNavigationMainColor"
+            app:summary="@string/settingsNavigationMainColorSummary"
+            app:title="@string/settingsNavigationMainColorTitle" />
+
+        <Preference
+            app:iconSpaceReserved="false"
+            app:key="settingsNavigationIconColor"
+            app:summary="@string/settingsNavigationIconColorSummary"
+            app:title="@string/settingsNavigationIconColorTitle" />
+
+        <Preference
+            app:iconSpaceReserved="false"
+            app:key="settingsNavigationTextColor"
+            app:summary="@string/settingsNavigationTextColorSummary"
+            app:title="@string/settingsNavigationTextColorTitle" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

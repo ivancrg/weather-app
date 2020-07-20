@@ -1,17 +1,40 @@
 package com.example.weatherapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Pair;
+
+import androidx.preference.PreferenceManager;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Configuration {
+    private static boolean firstStart;
+    private static Context context;
     private static final String BASE_URL = "https://api.openweathermap.org";
     private static final String PATH_URL = "/data/2.5/onecall";
     private static final String APP_ID = "dcc06c34cf7bba0ff30aabd3269d249b";
+    private static boolean DARK_MODE_ENABLED;
+    private static boolean TOOLBAR_ENABLED;
+    private static boolean NAVIGATION_TYPE_DRAWER;
+    private static boolean NAVIGATION_TYPE_BOTTOM;
     private static final float zagrebLatitude = 45.815399f;
     private static final float zagrebLongitude = 15.966568f;
     private static Map<String, Pair<Float, Float>> coordinatesMap = new HashMap<>();
+    private static int colorPrimary;
+    private static int colorPrimaryDark;
+    private static int navigationBackground;
+    private static int navigationIcon;
+    private static int navigationText;
+
+    public static boolean isFirstStart() {
+        return firstStart;
+    }
+
+    public static void setContext(Context context) {
+        Configuration.context = context;
+    }
 
     private static void initializeCoordinatesMap() {
         coordinatesMap.put("Amsterdam", new Pair<>(52.379189f, 4.899431f));
@@ -88,5 +111,66 @@ public abstract class Configuration {
 
     public static float getZagrebLongitude() {
         return zagrebLongitude;
+    }
+
+    public static boolean isDarkModeEnabled() {
+        return DARK_MODE_ENABLED;
+    }
+
+    public static boolean isToolbarEnabled() {
+        return TOOLBAR_ENABLED;
+    }
+
+    public static boolean isNavigationTypeDrawer() {
+        return NAVIGATION_TYPE_DRAWER;
+    }
+
+    public static boolean isNavigationTypeBottom() {
+        return NAVIGATION_TYPE_BOTTOM;
+    }
+
+    public static int getColorPrimary() {
+        return colorPrimary;
+    }
+
+    public static int getColorPrimaryDark() {
+        return colorPrimaryDark;
+    }
+
+    public static int getNavigationBackground() {
+        return navigationBackground;
+    }
+
+    public static int getNavigationIcon() {
+        return navigationIcon;
+    }
+
+    public static int getNavigationText() {
+        return navigationText;
+    }
+
+    public static void refreshPreferences() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+
+        firstStart = sharedPreferences.getBoolean("firstStart", true);
+
+        DARK_MODE_ENABLED = sharedPreferences.getBoolean("settingsDarkMode", false);
+        TOOLBAR_ENABLED = sharedPreferences.getBoolean("settingsToolbar", false);
+
+        boolean navigationType = sharedPreferences.getBoolean("settingsNavigationType", false);
+        if (!navigationType) {
+            NAVIGATION_TYPE_DRAWER = false;
+            NAVIGATION_TYPE_BOTTOM = true;
+        } else {
+            NAVIGATION_TYPE_DRAWER = true;
+            NAVIGATION_TYPE_BOTTOM = false;
+        }
+
+        //boje
+        colorPrimary = sharedPreferences.getInt("colorPrimary", 0);
+        colorPrimaryDark = sharedPreferences.getInt("colorPrimaryDark", 0);
+        navigationBackground = sharedPreferences.getInt("navigationBackground", 0);
+        navigationIcon = sharedPreferences.getInt("navigationIcon", 0);
+        navigationText = sharedPreferences.getInt("navigationText", 0);
     }
 }
