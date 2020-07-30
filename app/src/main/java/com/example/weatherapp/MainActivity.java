@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +23,8 @@ import androidx.preference.PreferenceManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private RelativeLayout relativeLayout;
     private DrawerLayout drawerLayout;
@@ -33,20 +34,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Configuration.setContext(getApplicationContext());
-        Configuration.refreshPreferences();
+        Configuration.refreshPreferences(getApplicationContext());
 
         if (Configuration.isFirstStart()) {
             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
-            editor.putBoolean("firstStart", true);
-            editor.putInt("colorPrimary", ContextCompat.getColor(this, R.color.colorPrimary));
-            editor.putInt("colorPrimaryDark", ContextCompat.getColor(this, R.color.colorPrimaryDark));
-            editor.putInt("navigationBackground", ContextCompat.getColor(this, R.color.navigationBackground));
-            editor.putInt("navigationIcon", ContextCompat.getColor(this, R.color.navigationIcon));
-            editor.putInt("navigationText", ContextCompat.getColor(this, R.color.navigationText));
+            editor.putBoolean(Configuration.getFirstStartPref(), false);
+            editor.putInt(Configuration.getColorPrimaryPref(), ContextCompat.getColor(this, R.color.colorPrimary));
+            editor.putInt(Configuration.getColorPrimaryDarkPref(), ContextCompat.getColor(this, R.color.colorPrimaryDark));
+            editor.putInt(Configuration.getNavigationBackgroundPref(), ContextCompat.getColor(this, R.color.navigationBackground));
+            editor.putInt(Configuration.getNavigationIconPref(), ContextCompat.getColor(this, R.color.navigationIcon));
+            editor.putInt(Configuration.getNavigationTextPref(), ContextCompat.getColor(this, R.color.navigationText));
             editor.apply();
 
-            Configuration.refreshPreferences();
+            Configuration.refreshPreferences(getApplicationContext());
         }
 
         relativeLayout = findViewById(R.id.navigation_bottom_layout);
@@ -70,17 +70,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 splashContainer.setVisibility(View.GONE);
                 MainScreen mainScreen = new MainScreen();
 
-                if (!Configuration.isNavigationTypeBottom())
+                if (!Configuration.isNavigationTypeBottom()) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_drawer, mainScreen).commit();
-                else
+                } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_bottom, mainScreen).commit();
+                }
             }, 2500);
         }
     }
 
     @Override
-    public void onResume(){
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.navigation_header_layout);
+    public void onResume() {
+        LinearLayout linearLayout = findViewById(R.id.navigation_header_layout);
         if (linearLayout != null)
             linearLayout.setBackgroundColor(Configuration.getNavigationBackground());
         super.onResume();
@@ -117,17 +118,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             };
 
     private void initializeSettings() {
-        Configuration.refreshPreferences();
+        Configuration.refreshPreferences(getApplicationContext());
 
-        if(!Configuration.isDarkModeEnabled())
+        if (!Configuration.isDarkModeEnabled()) {
             applyColors();
-        else
+        }
+        else {
             applyDarkColors();
+        }
 
         if (Configuration.isToolbarEnabled())
-            getSupportActionBar().show();
+            Objects.requireNonNull(getSupportActionBar()).show();
         else
-            getSupportActionBar().hide();
+            Objects.requireNonNull(getSupportActionBar()).hide();
 
         if (Configuration.isNavigationTypeDrawer())
             relativeLayout.setVisibility(View.GONE);
@@ -171,15 +174,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bottomNavigationView.setItemIconTintList(colorStateList);
         drawerNavigationView.setItemIconTintList(colorStateList);
 
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Configuration.getColorPrimary()));
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Configuration.getColorPrimary()));
 
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.navigation_header_layout);
+        LinearLayout linearLayout = findViewById(R.id.navigation_header_layout);
         if (linearLayout != null)
             linearLayout.setBackgroundColor(Configuration.getNavigationBackground());
     }
 
     public void changeNavigation(boolean isNavigationDrawer) {
-        Configuration.refreshPreferences();
+        Configuration.refreshPreferences(getApplicationContext());
 
         if (isNavigationDrawer) {
             relativeLayout.setVisibility(View.GONE);
@@ -193,13 +196,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_bottom, new SettingsScreen()).commit();
         }
 
-        if(!Configuration.isDarkModeEnabled())
+        if (!Configuration.isDarkModeEnabled())
             applyColors();
         else
             applyDarkColors();
     }
 
-    public void applyDarkColors(){
+    public void applyDarkColors() {
         setTheme(R.style.DarkPreferenceTheme);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_view);
@@ -227,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bottomNavigationView.setItemIconTintList(colorStateList);
         drawerNavigationView.setItemIconTintList(colorStateList);
 
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Configuration.getColorPrimaryDark()));
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Configuration.getColorPrimaryDark()));
 
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.navigation_header_layout);
         if (linearLayout != null)

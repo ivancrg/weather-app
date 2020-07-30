@@ -12,6 +12,8 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 import yuku.ambilwarna.AmbilWarnaDialog;
@@ -21,11 +23,11 @@ public class SettingsScreen extends PreferenceFragmentCompat {
     private View preferenceView;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         preferenceView = view;
 
-        Configuration.refreshPreferences();
+        Configuration.refreshPreferences(requireContext());
 
         assert view != null;
         if (Configuration.isDarkModeEnabled()) {
@@ -42,14 +44,14 @@ public class SettingsScreen extends PreferenceFragmentCompat {
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
 
-        Preference primaryAppColor = getPreferenceManager().findPreference("settingsPrimaryColor");
-        Preference primaryDarkAppColor = getPreferenceManager().findPreference("settingsPrimaryDarkColor");
-        Preference darkModeSwitch = getPreferenceManager().findPreference("settingsDarkMode");
-        Preference toolbarSwitch = getPreferenceManager().findPreference("settingsToolbar");
-        Preference navigationTypeSwitch = getPreferenceManager().findPreference("settingsNavigationType");
-        Preference mainNavigationColor = getPreferenceManager().findPreference("settingsNavigationMainColor");
-        Preference iconNavigationColor = getPreferenceManager().findPreference("settingsNavigationIconColor");
-        Preference textNavigationColor = getPreferenceManager().findPreference("settingsNavigationTextColor");
+        final Preference primaryAppColor = getPreferenceManager().findPreference("settingsPrimaryColor");
+        final Preference primaryDarkAppColor = getPreferenceManager().findPreference("settingsPrimaryDarkColor");
+        final Preference darkModeSwitch = getPreferenceManager().findPreference("settingsDarkMode");
+        final Preference toolbarSwitch = getPreferenceManager().findPreference("settingsToolbar");
+        final Preference navigationTypeSwitch = getPreferenceManager().findPreference("settingsNavigationType");
+        final Preference mainNavigationColor = getPreferenceManager().findPreference("settingsNavigationMainColor");
+        final Preference iconNavigationColor = getPreferenceManager().findPreference("settingsNavigationIconColor");
+        final Preference textNavigationColor = getPreferenceManager().findPreference("settingsNavigationTextColor");
 
         assert darkModeSwitch != null;
         darkModeSwitch.setOnPreferenceChangeListener((preference, newValue) -> {
@@ -61,7 +63,7 @@ public class SettingsScreen extends PreferenceFragmentCompat {
                 preferenceView.setBackgroundColor(Color.WHITE);
             }
 
-            Configuration.refreshPreferences();
+            Configuration.refreshPreferences(requireContext());
 
             if (Configuration.isNavigationTypeDrawer())
                 ((MainActivity) requireActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_drawer, new SettingsScreen()).commit();
@@ -73,7 +75,8 @@ public class SettingsScreen extends PreferenceFragmentCompat {
 
         assert primaryAppColor != null;
         primaryAppColor.setOnPreferenceClickListener(preference -> {
-            colorToSave = "colorPrimary";
+            Configuration.refreshPreferences(requireContext());
+            colorToSave = Configuration.getColorPrimaryPref();
             setColor(Configuration.getColorPrimary());
 
             return true;
@@ -81,7 +84,8 @@ public class SettingsScreen extends PreferenceFragmentCompat {
 
         assert primaryDarkAppColor != null;
         primaryDarkAppColor.setOnPreferenceClickListener(preference -> {
-            colorToSave = "colorPrimaryDark";
+            Configuration.refreshPreferences(requireContext());
+            colorToSave = Configuration.getColorPrimaryDarkPref();
             setColor(Configuration.getColorPrimaryDark());
 
             return true;
@@ -89,7 +93,8 @@ public class SettingsScreen extends PreferenceFragmentCompat {
 
         assert mainNavigationColor != null;
         mainNavigationColor.setOnPreferenceClickListener(preference -> {
-            colorToSave = "navigationBackground";
+            Configuration.refreshPreferences(requireContext());
+            colorToSave = Configuration.getNavigationBackgroundPref();
             setColor(Configuration.getNavigationBackground());
 
             return true;
@@ -97,7 +102,8 @@ public class SettingsScreen extends PreferenceFragmentCompat {
 
         assert iconNavigationColor != null;
         iconNavigationColor.setOnPreferenceClickListener(preference -> {
-            colorToSave = "navigationIcon";
+            Configuration.refreshPreferences(requireContext());
+            colorToSave = Configuration.getNavigationIconPref();
             setColor(Configuration.getNavigationIcon());
 
             return true;
@@ -105,7 +111,8 @@ public class SettingsScreen extends PreferenceFragmentCompat {
 
         assert textNavigationColor != null;
         textNavigationColor.setOnPreferenceClickListener(preference -> {
-            colorToSave = "navigationText";
+            Configuration.refreshPreferences(requireContext());
+            colorToSave = Configuration.getNavigationTextPref();
             setColor(Configuration.getNavigationText());
 
             return true;
@@ -144,9 +151,9 @@ public class SettingsScreen extends PreferenceFragmentCompat {
                 editor.putInt(colorToSave, color);
                 editor.apply();
 
-                Configuration.refreshPreferences();
+                Configuration.refreshPreferences(requireContext());
 
-                if(Configuration.isDarkModeEnabled())
+                if (Configuration.isDarkModeEnabled())
                     ((MainActivity) requireActivity()).applyDarkColors();
                 else
                     ((MainActivity) requireActivity()).applyColors();

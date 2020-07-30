@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Pair;
 
+import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
 import java.util.HashMap;
@@ -11,7 +12,6 @@ import java.util.Map;
 
 public abstract class Configuration {
     private static boolean firstStart;
-    private static Context context;
     private static final String BASE_URL = "https://api.openweathermap.org";
     private static final String PATH_URL = "/data/2.5/onecall";
     private static final String APP_ID = "dcc06c34cf7bba0ff30aabd3269d249b";
@@ -22,18 +22,44 @@ public abstract class Configuration {
     private static final float zagrebLatitude = 45.815399f;
     private static final float zagrebLongitude = 15.966568f;
     private static Map<String, Pair<Float, Float>> coordinatesMap = new HashMap<>();
-    private static int colorPrimary;
-    private static int colorPrimaryDark;
-    private static int navigationBackground;
-    private static int navigationIcon;
-    private static int navigationText;
+    private static int colorPrimary = Integer.parseInt("6200EE", 16);
+    private static int colorPrimaryDark = Integer.parseInt("3700B3", 16);
+    private static int navigationBackground = Integer.parseInt("018255", 16);
+    private static int navigationIcon = Integer.parseInt("000000", 16);
+    private static int navigationText = Integer.parseInt("000000", 16);
+    private static final String FIRST_START_PREF = "firstStart";
+    private static final String COLOR_PRIMARY_PREF = "colorPrimary";
+    private static final String COLOR_PRIMARY_DARK_PREF = "colorPrimaryDark";
+    private static final String NAVIGATION_BACKGROUND_PREF = "navigationBackground";
+    private static final String NAVIGATION_ICON_PREF = "navigationIcon";
+    private static final String NAVIGATION_TEXT_PREF = "navigationText";
+
+    public static String getFirstStartPref() {
+        return FIRST_START_PREF;
+    }
+
+    public static String getColorPrimaryPref() {
+        return COLOR_PRIMARY_PREF;
+    }
+
+    public static String getColorPrimaryDarkPref() {
+        return COLOR_PRIMARY_DARK_PREF;
+    }
+
+    public static String getNavigationBackgroundPref() {
+        return NAVIGATION_BACKGROUND_PREF;
+    }
+
+    public static String getNavigationIconPref() {
+        return NAVIGATION_ICON_PREF;
+    }
+
+    public static String getNavigationTextPref() {
+        return NAVIGATION_TEXT_PREF;
+    }
 
     public static boolean isFirstStart() {
         return firstStart;
-    }
-
-    public static void setContext(Context context) {
-        Configuration.context = context;
     }
 
     private static void initializeCoordinatesMap() {
@@ -149,10 +175,10 @@ public abstract class Configuration {
         return navigationText;
     }
 
-    public static void refreshPreferences() {
+    public static void refreshPreferences(Context context) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
 
-        firstStart = sharedPreferences.getBoolean("firstStart", true);
+        firstStart = sharedPreferences.getBoolean(FIRST_START_PREF, true);
 
         DARK_MODE_ENABLED = sharedPreferences.getBoolean("settingsDarkMode", false);
         TOOLBAR_ENABLED = sharedPreferences.getBoolean("settingsToolbar", false);
@@ -167,10 +193,10 @@ public abstract class Configuration {
         }
 
         //boje
-        colorPrimary = sharedPreferences.getInt("colorPrimary", 0);
-        colorPrimaryDark = sharedPreferences.getInt("colorPrimaryDark", 0);
-        navigationBackground = sharedPreferences.getInt("navigationBackground", 0);
-        navigationIcon = sharedPreferences.getInt("navigationIcon", 0);
-        navigationText = sharedPreferences.getInt("navigationText", 0);
+        colorPrimary = sharedPreferences.getInt(COLOR_PRIMARY_PREF, 0);
+        colorPrimaryDark = sharedPreferences.getInt(COLOR_PRIMARY_DARK_PREF, 0);
+        navigationBackground = sharedPreferences.getInt(NAVIGATION_BACKGROUND_PREF, 0);
+        navigationIcon = sharedPreferences.getInt(NAVIGATION_ICON_PREF, 0);
+        navigationText = sharedPreferences.getInt(NAVIGATION_TEXT_PREF, 0);
     }
 }
