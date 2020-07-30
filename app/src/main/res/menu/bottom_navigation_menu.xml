@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_main"
+        android:id="@+id/navigation_bottom_main"
         android:icon="@drawable/mainscreenicon"
         android:title="@string/mainScreenTitle" />
 
     <item
-        android:id="@+id/navigation_forecastweek"
+        android:id="@+id/navigation_bottom_forecastweek"
         android:icon="@drawable/forecastweekscreenicon"
         android:title="@string/weekForecastScreenTitle" />
 
     <item
-        android:id="@+id/navigation_forecast48"
+        android:id="@+id/navigation_bottom_forecast48"
         android:icon="@drawable/forecast48screenicon"
         android:title="@string/forecast48ScreenTitle" />
 
     <item
-        android:id="@+id/navigation_search"
+        android:id="@+id/navigation_bottom_search"
         android:icon="@drawable/searchscreenicon"
         android:title="@string/searchScreenTitle" />
+
+    <item
+        android:id="@+id/navigation_bottom_settings"
+        android:icon="@drawable/settingsscreenicon"
+        android:title="@string/settingsScreenTitle" />
 </menu>

@@ -53,7 +53,6 @@ public class SearchScreen extends Fragment implements AdapterView.OnItemSelected
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -75,7 +74,7 @@ public class SearchScreen extends Fragment implements AdapterView.OnItemSelected
         uvIndexLabel = view.findViewById(R.id.uvIndexLabel);
         Spinner spinner = view.findViewById(R.id.citiesSpinner);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(Objects.requireNonNull(getActivity()),
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireActivity(),
                 R.array.availableSearchCities, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);

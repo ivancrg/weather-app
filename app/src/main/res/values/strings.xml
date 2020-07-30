@@ -1,13 +1,10 @@
 <resources>
-    <string name="apply">Apply</string>
-
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="splash_screen_logo">Splash Screen logo</string>
     <string name="cityCountry">City, Country</string>
     <string name="refreshButtonText">Refresh</string>
-    <string name="countryNameInput">Enter country name...</string>
+    <string name="countryNameInput">Enter country name…</string>
     <string name="countryLabelText">Country:</string>
-    <string name="cityNameInput">Enter city name...</string>
+    <string name="cityNameInput">Enter city name…</string>
     <string name="cityLabelText">City:</string>
     <string name="windLabelText">Wind:</string>
     <string name="humidityLabelText">Humidity:</string>
@@ -20,9 +17,31 @@
     <string name="cityToSearch">City to search:</string>
     <string name="appName">Sunbeam</string>
     <string name="mainScreenTitle">Main Screen</string>
-    <string name="weekForecastScreenTitle">Week Forecast Screen</string>
-    <string name="forecast48ScreenTitle">48h Forecast Screen</string>
-    <string name="searchScreenTitle">Search Screen</string>
+    <string name="weekForecastScreenTitle">Week Forecast</string>
+    <string name="forecast48ScreenTitle">48h Forecast</string>
+    <string name="searchScreenTitle">Search</string>
+    <string name="settingsScreenTitle">Settings</string>
+    <string name="settingsNavigation">Navigation</string>
+    <string name="settingsNavigationMainColorTitle">Set main navigation color</string>
+    <string name="settingsNavigationMainColorSummary">Choose a color from color picker</string>
+    <string name="settingsNavigationIconColorTitle">Set navigation icon color</string>
+    <string name="settingsNavigationIconColorSummary">Choose a color from color picker</string>
+    <string name="settingsNavigationTextColorTitle">Set navigation text color</string>
+    <string name="settingsNavigationTextColorSummary">Choose a color from color picker</string>
+    <string name="settingsGeneral">General</string>
+    <string name="settingsPrimaryColorSummary">Choose a color from color picker</string>
+    <string name="settingsPrimaryColorTitle">Set primary app color</string>
+    <string name="settingsPrimaryDarkColorSummary">Choose a color from color picker</string>
+    <string name="settingsPrimaryDarkColorTitle">Set primary dark app color</string>
+    <string name="settingsAccentColorSummary">Choose a color from color picker</string>
+    <string name="settingsAccentColorTitle">Set accent app color</string>
+    <string name="settingsDarkModeSummary">Enable or disable dark mode</string>
+    <string name="settingsDarkModeTitle">Dark mode</string>
+    <string name="settingsToolbarSummary">Enable or disable app toolbar</string>
+    <string name="settingsToolbarTitle">Toolbar</string>
+    <string name="settingsNavigationTypeDisabled">Using bottom navigation</string>
+    <string name="settingsNavigationTypeEnabled">Using navigation drawer (default)</string>
+    <string name="settingsNavigationTypeTitle">Use drawer navigation (default)</string>
     <string-array name="availableSearchCities">
         <item>Amsterdam</item>
         <item>Andorra la Vella</item>
